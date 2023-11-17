@@ -1,0 +1,97 @@
+{% extends 'navbar1.html' %}
+{% block content %}
+{% load static %}
+
+<head>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:sans-serif;
+        }
+        body{
+            
+                {% comment %} background-image: url('{% static "image/11.png" %}');
+                background-size: cover; {% endcomment %}
+                color: white;
+            
+            background:linear-gradient(135deg,#71b7e6,#9b59b6)
+        }
+        {% comment %} .container{
+            max-width:700px;
+            width:100%;
+            background:#fff;
+            padding: 25px 30px;
+            border-radius:5px;
+        }
+        h1::before{
+            content:'';
+            position: absolute;
+            left: 0;
+            bottom:0;
+            height: 3px;
+            width: 30px;
+            background:linear-gradient(135deg,#71b7e6,#9b59b6)
+        } {% endcomment %}
+        #cd{
+            background-color: rgba(0, 0, 0, 0.65);
+            padding: 20px;
+            border-radius: 5px;
+            font-size: larger;
+        }
+    </style>
+</head>
+<body>    
+
+{% for i in messages %}
+<h4><center>{{i}}</center></h4>
+{% endfor %}
+<br><br>
+<div class="container col-4" id="cd">
+<form action="{% url 'addstudent' %}" method="post">
+    {% csrf_token %}
+    <h1><center>Add Student</center></h1>
+    <div class="user-details">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Name</label>
+      <input type="text" name="name" placeholder="Enter Fullname" class="form-control">      
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Age</label>
+        <input type="number" name="age" placeholder="Enter Age" class="form-control">        
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Email</label>
+        <input type="email" name="email" placeholder="Enter email" class="form-control">        
+    </div>
+    <div class="row">
+    <div class="form-group col">
+        <label for="exampleInputEmail1">Joindate</label>
+        <input type="date" name="date" class="form-control">        
+    </div>
+    
+    <div class="form-group col">
+        <label for="exampleInputEmail1">Qualification</label>
+        <input type="text" name="qualification" placeholder="Enter Qualification" class="form-control">        
+    </div>
+</div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Gender : </label>
+        <input type="radio" name="gender" value="male"> Male
+        <input type="radio" name="gender" value="female"> Female     
+    </div>
+    <div class="form-group">
+        <select name="course" class="form-control">
+            {% for i in cours %}
+            <option value="{{i.id}}">{{i.coursename}}</option>
+            {% endfor %}
+        </select>        
+    </div>
+    <button type="submit" class="btn btn-primary form-control">Submit</button>
+</div>
+  </form>
+</div>
+
+</body>
+{% endblock %}

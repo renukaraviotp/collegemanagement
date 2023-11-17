@@ -1,0 +1,71 @@
+{% extends 'navbar.html' %}
+{% block content %}
+{% load static %}
+<style>
+body{
+    background:linear-gradient(135deg,#71b7e6,#9b59b6);
+    
+    color: white;
+}
+#cd{
+    background-color: rgba(0, 0, 0, 0.65);
+    padding: 20px;
+    border-radius: 5px;
+    font-size: larger;
+}
+</style>
+<br><br>
+<div class="container col-4" id="cd">
+    {% for i in messages %}
+<h4>{{i}}</h4>
+{% endfor %}
+<form action="{% url 'upd' s.id %}" method="post">
+    <center><h2>Edit student</h2></center>
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="exampleInputEmail1">Name</label>
+      <input type="text" name="name" value="{{s.name}}" class="form-control" placeholder="Fullname">      
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Age</label>
+        <input type="number" name="age" value="{{s.age}}" class="form-control" placeholder="Age" >        
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Email</label>
+        <input type="email" name="email" value="{{s.email}}" class="form-control" placeholder="Enter email">        
+    </div>
+    <div class="row">
+        <div class="form-group col">
+            <label for="exampleInputEmail1">Joindate</label>
+            <input type="date" name="date" value="{{s.joindate|date:'Y-m-d'}}" class="form-control" >        
+        </div>
+        <div class="form-group col">
+            <label for="exampleInputEmail1">Qualification</label>
+            <input type="text" name="qualification" value="{{s.qualification}}" class="form-control" placeholder="Enter email">        
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Gender : </label>
+        <input type="radio" name="gender" value="male" {% if s.gender == 'male' %} checked {% endif %}> Male
+        <input type="radio" name="gender" value="female" {% if s.gender == 'female' %} checked {% endif %}> Female
+    </div>
+    <div class="form-group">
+        <label for="">Course</label>
+        <select name="course" class="form-control" >
+            
+            <option value="">-select-</option>
+            {% for i in c %}
+            {% if i.id == s.course_id %}
+            <option value="{{i.id}}" selected>{{i.coursename}}</option>
+            {% else %}
+            <option value="{{i.id}}">{{i.coursename}}</option>
+            {% endif %}
+            {% endfor %}
+        </select>        
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+<br><br><br><br><br>
+
+{% endblock %}

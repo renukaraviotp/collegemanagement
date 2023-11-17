@@ -1,0 +1,38 @@
+{% extends 'navbar1.html' %}
+{% block content %}
+{% load static %}
+
+<body style='background:linear-gradient(135deg,#71b7e6,#9b59b6)'>
+    <br>
+    <h1><center>Student Details</center></h1><br>
+<div class="container">
+    <table class="table" border="2px">
+        <tr>
+            <th>Full name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Join Date</th>
+            <th>Qualification</th>
+            <th>Email</th>
+            <th>Course name</th>
+            <th colspan="2">Action</th>
+        </tr>
+        {% for i in view %}
+        <tr>
+            <td>{{i.name}}</td>
+            <td>{{i.age}}</td>
+            <td>{{i.gender}}</td>
+            <td>{{i.joindate}}</td>
+            <td>{{i.qualification}}</td>
+            <td>{{i.email}}</td>
+            <td>{{i.course.coursename}}</td>
+            <td><a href="{% url "edt" i.id %}" class="btn btn-warning">Edit</a></td> 
+            <td><a href="{% url "deletestud" i.id %}" class="btn btn-danger">Delete</a></td>
+            
+            
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+</body>
+{% endblock %}

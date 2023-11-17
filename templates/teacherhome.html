@@ -1,0 +1,34 @@
+{% extends 'navbar.html' %}
+{% block content %}
+{% load static %}
+<head>
+    <style>
+        body{
+             background-image: url('{% static "images/22.jpg" %}');
+             background-size: cover; 
+        }
+    </style>
+</head>
+<br><br>
+
+<center>
+    <br><br><br><br>
+    <div class="container col-12">
+        {% for i in messages %}
+        <h2>{{i}}</h2>
+        {% endfor %}
+    </div>
+<div class="container row">
+    
+    <div class="col">
+        <a href="{% url 'seeprofile' %}" style="text-decoration:none; font-size:30px; color:seagreen;"><img src="{% static 'images/6.png' %}" width="200" style="border-radius: 50px;" alt=""><br><b>See Profile</b></a>
+    </div>
+
+    <div class="col">
+        <a href="{% url 'edit' %}" style="text-decoration:none; font-size:30px; color:seagreen;"><img src="{% static 'images/3.png' %}" width="200"  alt=""><br><b> Edit Profile</b></a>
+    </div>
+    
+</div>
+</center>
+</body>
+{% endblock %}

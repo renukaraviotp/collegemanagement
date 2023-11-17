@@ -1,0 +1,161 @@
+{% extends "navbar1.html" %}
+{% block content %}
+{% load static %}
+<head>
+    <title>Add Course</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+            box-sizing:border-box;
+        }
+        body{
+            background-image:url('{% static "images/bgimg2.jpg" %}');
+            background-position:center;
+            background-size:cover;
+            background-repeat:no repeat;
+            background-attachment:fixed;
+        }
+        .wrapper{
+            width:100%;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            min-height:100vh;
+            background-color:rgba(0,0,0,0.2);
+        }
+        .login-box{
+            position:relative;
+            width: 450px;
+            backdrop-filter:blur(25px);
+            border:2px solid #c6c3c3;
+            birder-radius:15px;
+            padding: 7.5em 2.5rem 4rem 2.5rem;
+            color:#ffffff;
+            box-shadow:0px 0px 10px 2px rgba(0,0,0,0.3);
+        }
+        .login-header{
+            position: absolute;
+            top:0;
+            left:35%;
+            transform:translateY(-2%);
+            display: flex;
+            align-items:center;
+            justify-content:center;
+            background-color:#c6c3c3;
+            width: 140px;
+            height: 70px;
+            border-radius:0 0 20px 20px;
+            
+        }
+        .login-header span{
+            font-size: 20px;
+            color:black;
+            font-weight:bold; 
+        }
+        .login-header::before{
+            content:"";
+            position: absolute;
+            top:0;
+            left:-30px;
+            width: 30px;
+            height:30px;
+            border-top-right-radius:50%;
+            background:transparent;
+            box-shadow:15px 0 0 0 #c6c3c3;
+        }
+        .login-header::after{
+            content:"";
+            position: absolute;
+            top:0;
+            right:-30px;
+            width: 30px;
+            height:30px;
+            border-top-left-radius:50%;
+            background:transparent;
+            box-shadow:-15px 0 0 0 #c6c3c3;
+        }
+        .input-box{
+            position: relative;
+            display: flex;
+            flex-direction:column;
+            margin:20px 0;
+        }
+        .input-field{
+            width: 100%;
+            height:55px;
+            font-size:16px;
+            background:transparent;
+            color:#ffffff;
+            padding-inline: 20px 50px;
+            border:2px solid #c6c3c3;
+            border-radius:30px;
+            outline:none;
+        }
+        #user{
+            margin-bottom:10px;
+        }
+        .label{
+            position: absolute;
+            top:15px;
+            left:20px;
+            transition:.2s;
+        }
+        .input-field:focus ~ .label,
+        .input-field:valid ~ .label{
+            position: absolute;
+            top:-10px;
+            left:20px;
+            font-size:14px;
+            background-color:#c6c3c3;
+            border-radius:30px;
+            color:black;
+            padding:0 10px;
+        }
+        button{
+            width: 100%;
+            height:50px;
+            background:#ececec;
+            font-size:16px;
+            font-weight:500;
+            border:none;
+            border-radius:30px;
+            cursor:pointer;
+            transition:.3s;
+        }
+        button:hover{
+            background:#ffffff;
+        }
+        
+    </style>
+</head>
+<body>
+    <form action="{% url 'add' %}" method="post">
+        {% csrf_token %}
+    <div class="wrapper">
+        <div class="login-box">
+            <div class="login-header">
+                <span>Add Course</span>
+            </div>
+            <div class="input-box">
+                <input type="text" name='coursename' id='user' class='input-field' required>
+                <label for="user" class="label">Enter Course</label>
+                
+            </div>
+            <div class="input-box">
+                <input type="number" name='fee' id='fee' class='input-field' required>
+                <label for="user" class="label">Enter Course Fee</label>
+            </div>
+            <div class="input-box">
+                <button type='submit'>Submit</button>
+            </div>
+            {% for i in messages %}
+    <h5>{{i}}</h5>
+    {% endfor %}
+        </div>
+    </div>
+    
+</form>
+</body>
+
+{% endblock %}

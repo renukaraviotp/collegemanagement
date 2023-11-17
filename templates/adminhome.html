@@ -1,0 +1,47 @@
+{% extends 'navbar1.html' %}
+{% block content %}
+{% load static %}
+<head>
+    <style>
+        body{
+             background-image: url('{% static "images/22.jpg" %}');
+             background-size: cover; 
+        }
+    </style>
+</head>
+<br>
+<body>
+<center>
+    <br><br>
+    <div class="container col-12">
+        {% for i in messages %}
+        <h2>{{i}}</h2>
+        {% endfor %}
+    </div>
+    <br>
+<div class="container row">
+    
+    <div class="col">
+        <a href="{% url 'student' %}" style="text-decoration:none; font-size:30px; color:seagreen;"><img src="{% static 'images/4.jpg' %}" width="200" alt=""><br><b>Add Students</b></a>
+    </div>
+
+    <div class="col">
+        <a href="{% url 'add_course' %}" style="text-decoration:none; font-size:30px; color:seagreen;"><img src="{% static 'images/2.png' %}" width="200"  alt=""><br> <b>Add Course</b></a>
+    </div>
+    
+</div>
+<br><br>
+<div class="container row">
+    
+    <div class="col">
+        <a href="{% url 'show_teacher' %}" style="text-decoration:none; font-size:30px; color:seagreen;"><img src="{% static 'images/1.png' %}" width="200" alt=""><br><b>Show Teacher</b></a>
+    </div>
+
+    <div class="col">
+        <a href="{% url 'show_student' %}" style="text-decoration:none; font-size:30px; color:seagreen;"><img src="{% static 'images/5.png' %}" width="200"  alt=""><br><b>Show Students</b></a>
+    </div>
+    
+</div>
+</center>
+</body>
+{% endblock %}

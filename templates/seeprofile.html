@@ -1,0 +1,69 @@
+{% extends 'navbar.html' %}
+{% block content %}
+{% load static %}
+
+<head>
+    <style>
+        body{
+            background-color:lightblue;
+        }
+    </style>
+</head>
+<body>    
+
+    <div class="container col-sm-8">
+        <br><br>
+        <center><img src="{{img.url}}" alt="" width="250" style='border-radius:30px;'></center><br>
+        <table class="table">
+            <tr>
+                <th >First Name</th><td >{{name}}</td>
+            </tr>
+            <tr>
+                <th >Last Name</th><td >{{nam2}}</td>
+            </tr>
+            <tr>
+                <th >Username</th><td >{{uname}}</td>
+            </tr>
+            <tr>
+                <th>Age</th><td>{{age}}</td>
+                
+            </tr>
+                
+            <tr>
+                <th >Email</th><td >{{mail}}</td>
+            </tr>
+            <tr>
+                <th>Address</th><td>{{address}}</td>
+            </tr>
+
+            <tr>
+                <th>Contact Number</th><td>{{qual}}</td>
+                <!-- <th>Course name</th><td>{{course}}</td> -->
+            </tr>
+            <tr>
+                <th>Course</th><td>{{cor}}</td>
+            </tr>
+            <tr>
+                <th>Gender</th><td>{{gender}}</td>
+                
+            </tr>
+            <tr>
+                <th>Join Date</th><td>{{date}}</td>
+            </tr>
+                
+           
+        </table>
+
+        {% comment %} <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{img.url}}"  width="250" style='border-radius:30px;' alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{name}}</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+    </div> {% endcomment %}
+</body>
+
+
+{% endblock %}

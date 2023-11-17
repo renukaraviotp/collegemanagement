@@ -1,0 +1,110 @@
+{% extends 'navbar.html' %}
+{% block content %}
+{% load static %}
+<head>
+    <style>
+        #cd{
+            background-color: rgba(0, 0, 0, 0.65);
+            padding: 20px;
+            border-radius: 5px;
+            font-size: larger;
+        }
+        
+    </style>
+</head>
+<body style='background-color:#88e3a0;'>
+    
+
+<br><br>
+
+<div class="container col-sm-6" id="cd">
+    
+        
+            <center><h1 style="color: #e77272;">Teacher Registration <i class="fa-solid fa-graduation-cap"></i></h1></center>
+            {% if messages %}
+            {% for i in messages %}
+            
+              <center>  <h2 {% if i.tags %} class="{{i.tags}}" {% endif %} style="border-radius: 50px; background-color: white; padding: 10px 0;">{{i}}</h2></center>
+              
+            {% endfor %} 
+            {% endif %}
+            
+             <br>
+            <form action="{% url 'signupaction' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="form-group col">
+                        {% comment %} <label class="ml-2" for="fn">First name</label> {% endcomment %}
+                        <input type="text" name="fname" id="fn" style="color: #e77272;" class="form-control" placeholder="First name">
+                    </div>
+                    <div class="form-group col">
+                        {% comment %} <label class="ml-2" for="ln">Last name</label> {% endcomment %}
+                        <input type="text" name="lname" id="ln" style="color: #e77272;" class="form-control" placeholder="Last name">
+                    </div>
+                    <div class="form-group col">
+                        {% comment %} <label class="ml-2" for="un">Username</label> {% endcomment %}
+                        <input type="text" name="uname" id="un" style="color: #e77272;" class="form-control" placeholder="Username">
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="form-group col">
+                        {% comment %} <label class="ml-2" for="pa">Password</label> {% endcomment %}
+                        <input type="password" name="pass" id="pa" style="color: #f75858;" class="form-control" placeholder="Password">
+                    </div>
+                    <div class="form-group col">
+                        {% comment %} <label class="ml-2" for="cp">Confirm Password</label> {% endcomment %}
+                        <input type="password" name="cpass" id="cp" style="color: #e77272;" class="form-control" placeholder="Confirm Password">
+                    </div>
+                </div>
+                <div class="row">
+                <div class="form-group col">
+                    {% comment %} <label class="ml-2" for="em">Email</label> {% endcomment %}
+                    <input type="email" name="email" id="em" style="color: #e77272;" class="form-control" placeholder="Email">
+                </div>
+                <div class="form-group col">
+                    {% comment %} <label class="ml-2" for="ad">Address</label> {% endcomment %}
+                    <input type="text" name="address" id="ad" style="color: #e77272;" class="form-control" placeholder="Address">
+                </div>
+            </div>
+                <div class="row">
+                    <div class="form-group col-3">
+                        {% comment %} <label class="ml-2" for="age">Age</label> {% endcomment %}
+                        <input type="number" name="age" id="age" style="color: #e77272;" class="form-control" placeholder="Age">
+                    </div>
+                    <div class="form-group col">
+                        {% comment %} <label class="ml-2" for="">Contact Number</label> {% endcomment %}
+                        <input type="text" name="contact" id="" style="color: #e77272;" class="form-control" placeholder="Contact Number">
+                    </div>
+                
+                
+                <div class="form-group col">
+                    {% comment %} <label class="ml-2" for="">join date</label> {% endcomment %}
+                    <input type="date" name="date" id="" style="color: #e77272;" class="form-control">
+                </div>
+            </div>
+            <div class="form-group col">
+                <label class="ml-2" for="cn" style="color: white;">Gender:</label>
+                <input type="radio" value="male" name="gender" id="cn" style="color: white;" class=""><b style='color:white;'> male</b>
+                <input type="radio" value="female" name="gender" id="cn" style="color: #e77272;" class=""> <b style='color:white;'>female</b>
+            </div>
+                <div class="form-group">
+                    <select class="form-control" name="course" id="">
+                        {% for i in c %}
+                        <option value="{{i.id}}">{{i.coursename}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="ml-2" for="im" style="color: white;">Image : </label>
+                    <input style="font-size: larger;color: #e77272;" class="btn" type="file" name="image" id="im" required>
+                </div>
+                <button type="submit" class="btn form-control" style=" background-color:#f75858 ; font-weight: 500;  border-radius: 50px;" >Register </button>
+            
+            </form>
+            
+        
+</div>
+<br><br><br><br>
+</body>
+{% endblock %}
