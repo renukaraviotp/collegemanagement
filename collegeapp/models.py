@@ -14,7 +14,7 @@ class Teacher(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
     course = models.ForeignKey(Course,on_delete=models.CASCADE,null=True)
     address = models.CharField(max_length=255)
-    age = models.IntegerField()
+    age = models.IntegerField() 
     contactnumber = models.CharField(max_length=255)
     joindate = models.DateField() 
     gender = models.CharField(max_length=255)
